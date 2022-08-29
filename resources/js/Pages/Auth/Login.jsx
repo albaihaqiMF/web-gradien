@@ -9,7 +9,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
+        username: '',
         password: '',
         remember: '',
     });
@@ -34,23 +34,23 @@ export default function Login({ status, canResetPassword }) {
         <Guest>
             <Head title="Log in" />
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+            {status && <div className="mb-4 text-sm font-medium text-green-600">{status}</div>}
 
             <form onSubmit={submit}>
                 <div>
-                    <Label forInput="email" value="Email" />
+                    <Label forInput="username" value="Username" />
 
                     <Input
                         type="text"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
+                        name="username"
+                        value={data.username}
+                        className="block w-full mt-1"
                         autoComplete="username"
                         isFocused={true}
                         handleChange={onHandleChange}
                     />
 
-                    <InputError message={errors.email} className="mt-2" />
+                    <InputError message={errors.username} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
@@ -60,7 +60,7 @@ export default function Login({ status, canResetPassword }) {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="current-password"
                         handleChange={onHandleChange}
                     />
@@ -80,7 +80,7 @@ export default function Login({ status, canResetPassword }) {
                     {canResetPassword && (
                         <Link
                             href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
+                            className="text-sm text-gray-600 underline hover:text-gray-900"
                         >
                             Forgot your password?
                         </Link>

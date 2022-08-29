@@ -9,6 +9,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-react';
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
+        username: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -42,7 +43,7 @@ export default function Register() {
                         type="text"
                         name="name"
                         value={data.name}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="name"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -52,6 +53,22 @@ export default function Register() {
                     <InputError message={errors.name} className="mt-2" />
                 </div>
 
+                <div className='mt-4'>
+                    <Label forInput="username" value="Username" />
+
+                    <Input
+                        type="text"
+                        name="username"
+                        value={data.username}
+                        className="block w-full mt-1"
+                        autoComplete="username"
+                        handleChange={onHandleChange}
+                        required
+                    />
+
+                    <InputError message={errors.username} className="mt-2" />
+                </div>
+
                 <div className="mt-4">
                     <Label forInput="email" value="Email" />
 
@@ -59,7 +76,7 @@ export default function Register() {
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="username"
                         handleChange={onHandleChange}
                         required
@@ -75,7 +92,7 @@ export default function Register() {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="new-password"
                         handleChange={onHandleChange}
                         required
@@ -91,7 +108,7 @@ export default function Register() {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         handleChange={onHandleChange}
                         required
                     />
@@ -100,7 +117,7 @@ export default function Register() {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    <Link href={route('login')} className="underline text-sm text-gray-600 hover:text-gray-900">
+                    <Link href={route('login')} className="text-sm text-gray-600 underline hover:text-gray-900">
                         Already registered?
                     </Link>
 
